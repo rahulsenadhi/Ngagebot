@@ -1,0 +1,62 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight, Calendar } from 'lucide-react';
+
+interface FinalCTAProps {
+  onOpenContact: () => void;
+}
+
+export default function FinalCTA({ onOpenContact }: FinalCTAProps) {
+  return (
+    <section className="py-24 bg-black relative overflow-hidden">
+      <div className="absolute inset-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-electric-blue/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          Stop Managing Conversations.
+          <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-electric-cyan">
+            Start Controlling Them.
+          </span>
+        </h2>
+
+        <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Join hundreds of businesses that transformed their customer communication. Start your free trial today.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <Link
+            to="/signup"
+            className="group px-8 py-4 bg-electric-blue hover:bg-electric-cyan text-white rounded-lg font-semibold transition-all shadow-glow-md hover:shadow-glow-lg flex items-center gap-2 text-lg"
+          >
+            Start Free Trial
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <button
+            onClick={onOpenContact}
+            className="px-8 py-4 bg-dark-surface hover:bg-dark-border text-white rounded-lg font-semibold transition-all border border-dark-border hover:border-electric-blue/50 flex items-center gap-2 text-lg"
+          >
+            <Calendar className="w-5 h-5" />
+            Book a Demo
+          </button>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-gray-400 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+            <span>14-day free trial</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+            <span>No credit card required</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+            <span>Cancel anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
