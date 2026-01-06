@@ -23,40 +23,40 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-24 bg-black relative overflow-hidden">
+    <section className="py-20 bg-black relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
             Trusted by Forward-Thinking Teams
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             See how businesses transformed their customer communication.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-dark-surface border border-dark-border rounded-2xl p-8 hover:border-electric-blue/50 transition-all"
+              className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-electric-blue/50 transition-all"
             >
-              <div className="flex gap-1 mb-6">
+              <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 ))}
               </div>
 
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
                 "{testimonial.quote}"
               </p>
 
               <div>
-                <p className="text-white font-semibold">{testimonial.author}</p>
-                <p className="text-gray-400 text-sm">
+                <p className="text-white font-semibold text-sm">{testimonial.author}</p>
+                <p className="text-gray-400 text-xs">
                   {testimonial.role}, {testimonial.company}
                 </p>
               </div>

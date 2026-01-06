@@ -35,47 +35,43 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-dark-bg relative">
+    <section id="how-it-works" className="py-20 bg-dark-bg relative">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-dark-bg to-black opacity-50"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
             How It Works
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Get started in five simple steps. No technical expertise needed.
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="grid md:grid-cols-5 gap-6 mb-12">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="flex-shrink-0">
-                <div className="relative">
-                  <div className="w-20 h-20 bg-electric-blue/10 border-2 border-electric-blue rounded-2xl flex items-center justify-center">
-                    <step.icon className="w-10 h-10 text-electric-cyan" />
+            <div key={index} className="relative">
+              <div className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-electric-blue/50 transition-all group text-center h-full flex flex-col">
+                <div className="relative mb-4">
+                  <div className="w-16 h-16 bg-electric-blue/10 border-2 border-electric-blue rounded-xl flex items-center justify-center mx-auto group-hover:bg-electric-blue/20 transition-colors">
+                    <step.icon className="w-8 h-8 text-electric-cyan" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-electric-blue rounded-full flex items-center justify-center text-white text-sm font-bold">
+                  <div className="absolute -top-2 -right-2 w-7 h-7 bg-electric-blue rounded-full flex items-center justify-center text-white text-xs font-bold">
                     {step.number}
                   </div>
                 </div>
+                <h3 className="text-base font-bold text-white mb-2">{step.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed flex-grow">{step.description}</p>
               </div>
-
-              <div className="flex-1 bg-dark-surface border border-dark-border rounded-2xl p-8 hover:border-electric-blue/50 transition-all">
-                <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
-                <p className="text-gray-400 text-lg leading-relaxed">{step.description}</p>
-              </div>
-
               {index < steps.length - 1 && (
-                <div className="hidden md:block flex-shrink-0 w-px h-20 bg-gradient-to-b from-electric-blue to-transparent mx-auto"></div>
+                <div className="hidden md:block absolute top-10 -right-3 w-6 h-0.5 bg-gradient-to-r from-electric-blue to-electric-blue/20"></div>
               )}
             </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <p className="text-xl text-gray-300 mb-8">
+        <div className="text-center">
+          <p className="text-base text-gray-300">
             Most customers are live and handling conversations within 24 hours.
           </p>
         </div>

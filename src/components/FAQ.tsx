@@ -32,20 +32,20 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="py-24 bg-dark-bg relative">
+    <section className="py-20 bg-dark-bg relative">
       <div className="absolute inset-0 bg-gradient-to-b from-black via-dark-bg to-black opacity-50"></div>
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-300">
+          <p className="text-lg text-gray-300">
             Everything you need to know about how it works.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq, index) => (
             <div
               key={index}
@@ -53,9 +53,9 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left"
+                className="w-full flex items-center justify-between p-5 text-left"
               >
-                <span className="text-lg font-semibold text-white pr-8">{faq.question}</span>
+                <span className="text-base font-semibold text-white pr-8">{faq.question}</span>
                 <ChevronDown
                   className={`w-5 h-5 text-electric-cyan flex-shrink-0 transition-transform ${
                     openIndex === index ? 'transform rotate-180' : ''
@@ -63,8 +63,8 @@ export default function FAQ() {
                 />
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
+                <div className="px-5 pb-5">
+                  <p className="text-gray-400 text-sm leading-relaxed">{faq.answer}</p>
                 </div>
               )}
             </div>
