@@ -11,15 +11,15 @@ const navigation = [
 
 export default function Sidebar() {
   return (
-    <div className="w-64 bg-dark-surface border-r border-dark-border h-screen flex flex-col">
-      <div className="p-6 border-b border-dark-border">
+    <div className="w-64 bg-light-surface dark:bg-dark-surface border-r border-light-border dark:border-dark-border h-screen flex flex-col">
+      <div className="p-6 border-b border-light-border dark:border-dark-border">
         <div className="flex items-center gap-2">
           <div className="p-2 bg-blue-gradient rounded-lg">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-white">Ngagebot</h1>
-            <p className="text-xs text-gray-400">AI Support Assistant</p>
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white">Ngagebot</h1>
+            <p className="text-xs text-gray-600 dark:text-gray-400">AI Support Assistant</p>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function Sidebar() {
               `flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
                 isActive
                   ? 'bg-primary-blue/20 text-primary-blue'
-                  : 'text-gray-400 hover:text-white hover:bg-dark-bg'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white hover:bg-light-bg dark:hover:bg-dark-bg'
               }`
             }
           >
@@ -43,9 +43,9 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-dark-border">
+      <div className="p-4 border-t border-light-border dark:border-dark-border">
         <div className="bg-blue-gradient/10 border border-primary-blue/30 rounded-lg p-4">
-          <p className="text-sm text-gray-300 mb-2">
+          <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
             Need help getting started?
           </p>
           <button className="text-sm text-primary-blue hover:text-primary-light transition-colors font-semibold">

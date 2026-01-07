@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { TrialProvider } from './contexts/TrialContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/LandingPage';
 import SignupPage from './pages/SignupPage';
@@ -15,9 +16,10 @@ import SettingsPage from './pages/SettingsPage';
 function App() {
   return (
     <Router>
-      <AuthProvider>
-        <TrialProvider>
-          <Routes>
+      <ThemeProvider>
+        <AuthProvider>
+          <TrialProvider>
+            <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
@@ -69,9 +71,10 @@ function App() {
                 </ProtectedRoute>
               }
             />
-          </Routes>
-        </TrialProvider>
-      </AuthProvider>
+            </Routes>
+          </TrialProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   );
 }
