@@ -3,23 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-bg: 248 250 252;
-    --color-surface: 255 255 255;
-    --color-border: 226 232 240;
-    --color-text: 15 23 42;
-    --color-text-secondary: 100 116 139;
-  }
-
-  .dark {
-    --color-bg: 10 14 26;
-    --color-surface: 18 23 43;
-    --color-border: 30 42 74;
-    --color-text: 248 250 252;
-    --color-text-secondary: 148 163 184;
-  }
-
   body {
-    @apply bg-light-bg dark:bg-dark-bg text-slate-900 dark:text-white transition-colors;
+    @apply text-slate-900 dark:text-white transition-colors;
+    background-color: #F8FAFC;
+  }
+
+  .dark body {
+    background-color: #0A0E1A;
   }
 }
