@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Bot, CheckCircle2, Sparkles } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
@@ -11,6 +11,7 @@ export default function SignupPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -37,6 +38,9 @@ export default function SignupPage() {
         }
       } else {
         setSuccess(true);
+        setTimeout(() => {
+          navigate('/welcome');
+        }, 2000);
       }
     } catch (err) {
       setError('Something went wrong. Please try again.');
@@ -60,14 +64,11 @@ export default function SignupPage() {
             </div>
             <h2 className="text-2xl font-bold text-white mb-3">Account Created Successfully!</h2>
             <p className="text-gray-400 mb-6">
-              Welcome to Ngagebot! You can now log in to your account and start managing your customer communications.
+              Welcome to Ngagebot! Redirecting you to onboarding...
             </p>
-            <Link
-              to="/login"
-              className="inline-block px-6 py-3 bg-gradient-to-r from-primary-blue to-primary-light hover:from-primary-light hover:to-accent-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md"
-            >
-              Log In
-            </Link>
+            <div className="inline-block px-6 py-3">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-blue mx-auto"></div>
+            </div>
           </div>
         </div>
       </div>
