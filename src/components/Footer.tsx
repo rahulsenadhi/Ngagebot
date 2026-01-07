@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Sparkles, Twitter, Linkedin, Github } from 'lucide-react';
+import { Bot, Twitter, Linkedin, Github } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -8,8 +8,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <Link to="/" className="flex items-center gap-2 text-xl font-bold text-white mb-4">
-              <Sparkles className="w-6 h-6 text-primary-lighter" />
-              <span>AI Assistant</span>
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-blue to-primary-light rounded-lg flex items-center justify-center shadow-glow-sm">
+                <Bot className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-lighter to-accent-cyan">
+                Ngagebot
+              </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               One assistant for all your customer conversations across every channel.
@@ -100,7 +104,7 @@ export default function Footer() {
 
         <div className="border-t border-dark-border pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-gray-400 text-sm">
-            © 2026 AI Assistant. All rights reserved.
+            © 2026 Ngagebot. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a

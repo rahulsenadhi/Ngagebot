@@ -95,7 +95,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <>
               <h2 className="text-2xl font-bold text-white mb-2">Book a Demo</h2>
               <p className="text-gray-400 mb-6">
-                See how AI Assistant can transform your customer communication.
+                See how Ngagebot can transform your customer communication.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">

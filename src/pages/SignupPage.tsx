@@ -1,12 +1,13 @@
 import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, CheckCircle2 } from 'lucide-react';
+import { Bot, CheckCircle2, Sparkles } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [company, setCompany] = useState('');
+  const [password, setPassword] = useState('');
+  const [plan, setPlan] = useState<'free' | 'paid'>('free');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -17,20 +18,22 @@ export default function SignupPage() {
     setError('');
 
     try {
-      const { error: dbError } = await supabase.from('trial_signups').insert([
-        {
-          email,
-          name: name || null,
-          company: company || null,
-          source: 'signup_page',
+      const { error: signUpError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            name,
+            plan,
+          },
         },
-      ]);
+      });
 
-      if (dbError) {
-        if (dbError.code === '23505') {
-          setError('This email is already registered for a trial.');
+      if (signUpError) {
+        if (signUpError.message.includes('already registered')) {
+          setError('This email is already registered.');
         } else {
-          setError('Something went wrong. Please try again.');
+          setError(signUpError.message);
         }
       } else {
         setSuccess(true);
@@ -44,21 +47,26 @@ export default function SignupPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-dark-bg flex items-center justify-center px-4">
-        <div className="max-w-md w-full">
-          <div className="bg-dark-surface border border-dark-border rounded-2xl p-8 text-center shadow-glow-md">
-            <div className="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 className="w-8 h-8 text-electric-cyan" />
+      <div className="min-h-screen bg-gradient-to-br from-black via-dark-bg to-black relative overflow-hidden flex items-center justify-center px-4">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-blue/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-accent-cyan/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-md w-full">
+          <div className="bg-dark-surface/50 backdrop-blur-sm border border-dark-border rounded-2xl p-8 text-center shadow-glow-md">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary-blue/10 to-accent-cyan/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 className="w-8 h-8 text-accent-cyan" />
             </div>
-            <h2 className="text-2xl font-bold text-white mb-3">You're all set!</h2>
+            <h2 className="text-2xl font-bold text-white mb-3">Account Created Successfully!</h2>
             <p className="text-gray-400 mb-6">
-              We'll be in touch shortly with your trial access details.
+              Welcome to Ngagebot! You can now log in to your account and start managing your customer communications.
             </p>
             <Link
-              to="/"
-              className="inline-block px-6 py-3 bg-electric-blue hover:bg-electric-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md"
+              to="/login"
+              className="inline-block px-6 py-3 bg-gradient-to-r from-primary-blue to-primary-light hover:from-primary-light hover:to-accent-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md"
             >
-              Back to Home
+              Log In
             </Link>
           </div>
         </div>
@@ -67,22 +75,46 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen bg-dark-bg flex items-center justify-center px-4">
-      <div className="max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-br from-black via-dark-bg to-black relative overflow-hidden flex items-center justify-center px-4 py-12">
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary-blue/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-accent-cyan/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="relative max-w-md w-full">
         <div className="text-center mb-8">
-          <Link to="/" className="inline-flex items-center gap-2 text-2xl font-bold text-white mb-4">
-            <Sparkles className="w-8 h-8 text-electric-cyan" />
-            <span>AI Assistant</span>
+          <Link to="/" className="inline-flex items-center gap-2 text-2xl font-bold text-white mb-6 hover:opacity-80 transition-opacity">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-blue to-primary-light rounded-lg flex items-center justify-center shadow-glow-sm">
+              <Bot className="w-6 h-6 text-white" />
+            </div>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-lighter to-accent-cyan">
+              Ngagebot
+            </span>
           </Link>
-          <h1 className="text-3xl font-bold text-white mb-2">Start Your Free Trial</h1>
-          <p className="text-gray-400">No credit card required</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Create Your Account</h1>
+          <p className="text-gray-400">Start managing customer communications smarter</p>
         </div>
 
-        <div className="bg-dark-surface border border-dark-border rounded-2xl p-8 shadow-glow-md">
+        <div className="bg-dark-surface/50 backdrop-blur-sm border border-dark-border rounded-2xl p-8 shadow-glow-md">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all"
+                placeholder="John Doe"
+              />
+            </div>
+
+            <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                Email *
+                Email
               </label>
               <input
                 type="email"
@@ -90,37 +122,75 @@ export default function SignupPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all"
                 placeholder="you@company.com"
               />
             </div>
 
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
-                Name
+              <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-2">
+                Password
               </label>
               <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
-                placeholder="John Doe"
+                type="password"
+                id="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all"
+                placeholder="••••••••"
+                minLength={6}
               />
+              <p className="text-xs text-gray-500 mt-1">Must be at least 6 characters</p>
             </div>
 
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-2">
-                Company
+              <label className="block text-sm font-medium text-gray-300 mb-3">
+                Choose Your Plan
               </label>
-              <input
-                type="text"
-                id="company"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-                className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
-                placeholder="Your Company"
-              />
+              <div className="grid grid-cols-2 gap-4">
+                <button
+                  type="button"
+                  onClick={() => setPlan('free')}
+                  className={`relative p-4 rounded-lg border-2 transition-all ${
+                    plan === 'free'
+                      ? 'border-primary-blue bg-primary-blue/10'
+                      : 'border-dark-border bg-dark-bg hover:border-dark-border/80'
+                  }`}
+                >
+                  <div className="text-center">
+                    <Sparkles className={`w-6 h-6 mx-auto mb-2 ${plan === 'free' ? 'text-primary-lighter' : 'text-gray-400'}`} />
+                    <p className="font-semibold text-white mb-1">Free Trial</p>
+                    <p className="text-xs text-gray-400">14 days free</p>
+                  </div>
+                  {plan === 'free' && (
+                    <div className="absolute top-2 right-2">
+                      <CheckCircle2 className="w-5 h-5 text-accent-cyan" />
+                    </div>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setPlan('paid')}
+                  className={`relative p-4 rounded-lg border-2 transition-all ${
+                    plan === 'paid'
+                      ? 'border-primary-blue bg-primary-blue/10'
+                      : 'border-dark-border bg-dark-bg hover:border-dark-border/80'
+                  }`}
+                >
+                  <div className="text-center">
+                    <Bot className={`w-6 h-6 mx-auto mb-2 ${plan === 'paid' ? 'text-primary-lighter' : 'text-gray-400'}`} />
+                    <p className="font-semibold text-white mb-1">Paid Plan</p>
+                    <p className="text-xs text-gray-400">Full access</p>
+                  </div>
+                  {plan === 'paid' && (
+                    <div className="absolute top-2 right-2">
+                      <CheckCircle2 className="w-5 h-5 text-accent-cyan" />
+                    </div>
+                  )}
+                </button>
+              </div>
             </div>
 
             {error && (
@@ -132,15 +202,15 @@ export default function SignupPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 bg-electric-blue hover:bg-electric-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 bg-gradient-to-r from-primary-blue to-primary-light hover:from-primary-light hover:to-accent-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Processing...' : 'Start Free Trial'}
+              {loading ? 'Creating Account...' : 'Create Account'}
             </button>
           </form>
 
           <p className="text-center text-sm text-gray-400 mt-6">
             Already have an account?{' '}
-            <Link to="/login" className="text-electric-cyan hover:text-electric-glow transition-colors">
+            <Link to="/login" className="text-primary-lighter hover:text-accent-cyan transition-colors font-semibold">
               Log in
             </Link>
           </p>

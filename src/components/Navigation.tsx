@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Menu, X } from 'lucide-react';
+import { Bot, Menu, X } from 'lucide-react';
 
 interface NavigationProps {
   onOpenContact: () => void;
@@ -38,8 +38,12 @@ export default function Navigation({ onOpenContact }: NavigationProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-2 text-xl font-bold text-white group">
-            <Sparkles className="w-7 h-7 text-primary-lighter group-hover:text-primary-light transition-colors" />
-            <span>AI Assistant</span>
+            <div className="w-9 h-9 bg-gradient-to-br from-primary-blue to-primary-light rounded-lg flex items-center justify-center shadow-glow-sm group-hover:shadow-glow-md transition-all">
+              <Bot className="w-5 h-5 text-white" />
+            </div>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-lighter to-accent-cyan">
+              Ngagebot
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
