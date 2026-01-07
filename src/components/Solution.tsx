@@ -32,13 +32,13 @@ export default function Solution() {
   return (
     <section id="solution" className="py-20 bg-black relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-primary-blue/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
-            <div className="px-4 py-2 bg-electric-cyan/10 border border-electric-cyan/30 rounded-full text-electric-cyan text-sm font-medium">
+            <div className="px-4 py-2 bg-gradient-to-r from-primary-blue/20 to-accent-violet/20 border border-primary-light/40 rounded-full text-primary-lighter text-sm font-medium shadow-glow-sm">
               The Solution
             </div>
           </div>
@@ -54,10 +54,10 @@ export default function Solution() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-dark-surface border border-dark-border rounded-xl p-5 hover:border-electric-blue/50 transition-all hover:shadow-glow-sm group text-center"
+              className="bg-dark-surface border border-dark-border rounded-xl p-5 hover:border-primary-light/50 transition-all hover:shadow-glow-md group text-center"
             >
-              <div className="w-12 h-12 bg-electric-blue/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-electric-blue/20 transition-colors mx-auto">
-                <feature.icon className="w-6 h-6 text-electric-cyan" />
+              <div className="w-12 h-12 bg-primary-blue/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-blue/20 transition-colors mx-auto">
+                <feature.icon className="w-6 h-6 text-primary-lighter" />
               </div>
               <h3 className="text-base font-bold text-white mb-2">{feature.title}</h3>
               <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
@@ -65,7 +65,7 @@ export default function Solution() {
           ))}
         </div>
 
-        <div className="bg-gradient-to-r from-electric-blue/10 to-electric-cyan/10 border border-electric-blue/30 rounded-2xl p-8 text-center">
+        <div className="bg-gradient-to-r from-primary-blue/10 to-accent-violet/10 border border-primary-light/30 rounded-2xl p-8 text-center shadow-glow-md">
           <h3 className="text-2xl font-bold text-white mb-3">
             The Result?
           </h3>
@@ -75,7 +75,7 @@ export default function Solution() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-blue to-transparent"></div>
     </section>
   );
 }

@@ -70,13 +70,13 @@ export default function Pricing() {
               key={index}
               className={`bg-dark-surface border rounded-xl p-6 flex flex-col ${
                 plan.popular
-                  ? 'border-electric-blue shadow-glow-md relative'
-                  : 'border-dark-border hover:border-electric-blue/50 transition-all'
+                  ? 'border-primary-blue shadow-glow-md relative'
+                  : 'border-dark-border hover:border-primary-blue/50 transition-all'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <div className="px-3 py-1 bg-electric-blue rounded-full text-white text-xs font-semibold">
+                  <div className="px-3 py-1 bg-primary-blue rounded-full text-white text-xs font-semibold">
                     Most Popular
                   </div>
                 </div>
@@ -93,7 +93,7 @@ export default function Pricing() {
               <ul className="space-y-3 mb-6 flex-grow">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-electric-cyan flex-shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-primary-lighter flex-shrink-0 mt-0.5" />
                     <span className="text-gray-300 text-sm">{feature}</span>
                   </li>
                 ))}
@@ -103,8 +103,8 @@ export default function Pricing() {
                 to="/signup"
                 className={`block text-center py-3 rounded-lg font-semibold transition-all text-sm ${
                   plan.popular
-                    ? 'bg-electric-blue hover:bg-electric-cyan text-white shadow-glow-sm hover:shadow-glow-md'
-                    : 'bg-dark-border hover:bg-electric-blue/20 text-white border border-dark-border hover:border-electric-blue/50'
+                    ? 'bg-primary-blue hover:bg-primary-lighter text-white shadow-glow-sm hover:shadow-glow-md'
+                    : 'bg-dark-border hover:bg-primary-blue/20 text-white border border-dark-border hover:border-primary-blue/50'
                 }`}
               >
                 {plan.cta}
@@ -120,7 +120,7 @@ export default function Pricing() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-blue to-transparent"></div>
     </section>
   );
 }

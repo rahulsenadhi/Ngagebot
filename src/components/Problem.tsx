@@ -64,12 +64,12 @@ export default function Problem() {
         <div className="mt-12 text-center">
           <p className="text-base text-gray-300 max-w-3xl mx-auto">
             These problems cost you money, reputation, and peace of mind.{' '}
-            <span className="text-electric-cyan font-semibold">There's a better way.</span>
+            <span className="text-primary-lighter font-semibold">There's a better way.</span>
           </p>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-blue to-transparent"></div>
     </section>
   );
 }

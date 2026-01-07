@@ -38,7 +38,7 @@ export default function Navigation({ onOpenContact }: NavigationProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-2 text-xl font-bold text-white group">
-            <Sparkles className="w-7 h-7 text-electric-cyan group-hover:text-electric-glow transition-colors" />
+            <Sparkles className="w-7 h-7 text-primary-lighter group-hover:text-primary-light transition-colors" />
             <span>AI Assistant</span>
           </Link>
 
@@ -66,7 +66,7 @@ export default function Navigation({ onOpenContact }: NavigationProps) {
             </Link>
             <Link
               to="/signup"
-              className="px-6 py-2.5 bg-electric-blue hover:bg-electric-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md"
+              className="px-6 py-2.5 bg-primary-blue hover:bg-primary-lighter text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md"
             >
               Get Started Free
             </Link>
@@ -111,7 +111,7 @@ export default function Navigation({ onOpenContact }: NavigationProps) {
             </Link>
             <Link
               to="/signup"
-              className="block px-6 py-3 bg-electric-blue hover:bg-electric-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md text-center"
+              className="block px-6 py-3 bg-primary-blue hover:bg-primary-lighter text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md text-center"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Get Started Free

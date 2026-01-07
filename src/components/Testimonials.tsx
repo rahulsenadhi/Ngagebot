@@ -25,7 +25,7 @@ export default function Testimonials() {
   return (
     <section className="py-20 bg-black relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-electric-blue/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-primary-blue/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,7 +42,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-electric-blue/50 transition-all"
+              className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-primary-blue/50 transition-all"
             >
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -65,7 +65,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-blue to-transparent"></div>
     </section>
   );
 }

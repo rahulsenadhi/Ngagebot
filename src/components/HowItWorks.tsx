@@ -51,12 +51,12 @@ export default function HowItWorks() {
         <div className="grid md:grid-cols-5 gap-6 mb-12">
           {steps.map((step, index) => (
             <div key={index} className="relative">
-              <div className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-electric-blue/50 transition-all group text-center h-full flex flex-col">
+              <div className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-primary-blue/50 transition-all group text-center h-full flex flex-col">
                 <div className="relative mb-4">
-                  <div className="w-16 h-16 bg-electric-blue/10 border-2 border-electric-blue rounded-xl flex items-center justify-center mx-auto group-hover:bg-electric-blue/20 transition-colors">
-                    <step.icon className="w-8 h-8 text-electric-cyan" />
+                  <div className="w-16 h-16 bg-primary-blue/10 border-2 border-primary-blue rounded-xl flex items-center justify-center mx-auto group-hover:bg-primary-blue/20 transition-colors">
+                    <step.icon className="w-8 h-8 text-primary-lighter" />
                   </div>
-                  <div className="absolute -top-2 -right-2 w-7 h-7 bg-electric-blue rounded-full flex items-center justify-center text-white text-xs font-bold">
+                  <div className="absolute -top-2 -right-2 w-7 h-7 bg-primary-blue rounded-full flex items-center justify-center text-white text-xs font-bold">
                     {step.number}
                   </div>
                 </div>
@@ -64,7 +64,7 @@ export default function HowItWorks() {
                 <p className="text-gray-400 text-sm leading-relaxed flex-grow">{step.description}</p>
               </div>
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-10 -right-3 w-6 h-0.5 bg-gradient-to-r from-electric-blue to-electric-blue/20"></div>
+                <div className="hidden md:block absolute top-10 -right-3 w-6 h-0.5 bg-gradient-to-r from-primary-blue to-primary-blue/20"></div>
               )}
             </div>
           ))}
@@ -77,7 +77,7 @@ export default function HowItWorks() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-blue to-transparent"></div>
     </section>
   );
 }

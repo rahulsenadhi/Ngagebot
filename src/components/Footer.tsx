@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <Link to="/" className="flex items-center gap-2 text-xl font-bold text-white mb-4">
-              <Sparkles className="w-6 h-6 text-electric-cyan" />
+              <Sparkles className="w-6 h-6 text-primary-lighter" />
               <span>AI Assistant</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">

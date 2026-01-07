@@ -42,11 +42,11 @@ export default function DataTrust() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-electric-blue/50 transition-all group"
+              className="bg-dark-surface border border-dark-border rounded-xl p-6 hover:border-primary-blue/50 transition-all group"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-electric-blue/10 rounded-lg flex items-center justify-center group-hover:bg-electric-blue/20 transition-colors">
-                  <feature.icon className="w-6 h-6 text-electric-cyan" />
+                <div className="flex-shrink-0 w-12 h-12 bg-primary-blue/10 rounded-lg flex items-center justify-center group-hover:bg-primary-blue/20 transition-colors">
+                  <feature.icon className="w-6 h-6 text-primary-lighter" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
@@ -67,7 +67,7 @@ export default function DataTrust() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-blue to-transparent"></div>
     </section>
   );
 }

@@ -18,13 +18,13 @@ export default function ChannelDifferentiator() {
   return (
     <section className="py-20 bg-black relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-electric-blue/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary-blue/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-block mb-4">
-            <div className="px-4 py-2 bg-electric-cyan/10 border border-electric-cyan/30 rounded-full text-electric-cyan text-sm font-medium">
+            <div className="px-4 py-2 bg-primary-lighter/10 border border-primary-lighter/30 rounded-full text-primary-lighter text-sm font-medium">
               Game-Changing Feature
             </div>
           </div>
@@ -44,7 +44,7 @@ export default function ChannelDifferentiator() {
                 {inputChannels.map((channel, index) => (
                   <div
                     key={index}
-                    className="bg-dark-surface border border-dark-border rounded-lg p-4 hover:border-electric-blue/50 transition-all text-center group"
+                    className="bg-dark-surface border border-dark-border rounded-lg p-4 hover:border-primary-blue/50 transition-all text-center group"
                   >
                     <channel.icon className={`w-8 h-8 ${channel.color} mx-auto mb-2`} />
                     <p className="text-white text-sm font-semibold">{channel.name}</p>
@@ -54,8 +54,8 @@ export default function ChannelDifferentiator() {
             </div>
 
             <div className="flex-shrink-0">
-              <div className="w-16 h-16 bg-electric-blue/20 border-2 border-electric-blue rounded-full flex items-center justify-center animate-pulse-glow">
-                <ArrowRight className="w-8 h-8 text-electric-cyan" />
+              <div className="w-16 h-16 bg-primary-blue/20 border-2 border-primary-blue rounded-full flex items-center justify-center animate-pulse-glow">
+                <ArrowRight className="w-8 h-8 text-primary-lighter" />
               </div>
             </div>
 
@@ -65,7 +65,7 @@ export default function ChannelDifferentiator() {
                 {outputChannels.map((channel, index) => (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-electric-blue/10 to-electric-cyan/10 border border-electric-blue/50 rounded-lg p-4 hover:border-electric-cyan transition-all text-center group shadow-glow-sm"
+                    className="bg-gradient-to-br from-primary-blue/10 to-primary-lighter/10 border border-primary-blue/50 rounded-lg p-4 hover:border-primary-lighter transition-all text-center group shadow-glow-sm"
                   >
                     <channel.icon className={`w-8 h-8 ${channel.color} mx-auto mb-2`} />
                     <p className="text-white text-sm font-semibold">{channel.name}</p>
@@ -75,7 +75,7 @@ export default function ChannelDifferentiator() {
             </div>
           </div>
 
-          <div className="mt-12 bg-gradient-to-r from-electric-blue/10 to-electric-cyan/10 border border-electric-blue/30 rounded-2xl p-8 text-center">
+          <div className="mt-12 bg-gradient-to-r from-primary-blue/10 to-primary-lighter/10 border border-primary-blue/30 rounded-2xl p-8 text-center">
             <h3 className="text-xl font-bold text-white mb-3">
               Why This Matters
             </h3>
@@ -87,7 +87,7 @@ export default function ChannelDifferentiator() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric-blue to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-blue to-transparent"></div>
     </section>
   );
 }

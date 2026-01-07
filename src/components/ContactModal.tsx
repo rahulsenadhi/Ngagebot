@@ -77,8 +77,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <div className="p-8">
           {success ? (
             <div className="text-center">
-              <div className="w-16 h-16 bg-electric-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="w-8 h-8 text-electric-cyan" />
+              <div className="w-16 h-16 bg-primary-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="w-8 h-8 text-primary-lighter" />
               </div>
               <h2 className="text-2xl font-bold text-white mb-3">Thank You!</h2>
               <p className="text-gray-400 mb-6">
@@ -86,7 +86,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </p>
               <button
                 onClick={onClose}
-                className="px-6 py-3 bg-electric-blue hover:bg-electric-cyan text-white rounded-lg font-semibold transition-all"
+                className="px-6 py-3 bg-primary-blue hover:bg-primary-lighter text-white rounded-lg font-semibold transition-all"
               >
                 Close
               </button>
@@ -109,7 +109,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all"
                     placeholder="John Doe"
                   />
                 </div>
@@ -124,7 +124,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all"
                     placeholder="you@company.com"
                   />
                 </div>
@@ -138,7 +138,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     id="company"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all"
                     placeholder="Your Company"
                   />
                 </div>
@@ -152,7 +152,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-electric-blue focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-3 bg-dark-bg border border-dark-border rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-blue focus:border-transparent transition-all resize-none"
                     placeholder="Tell us about your needs..."
                   />
                 </div>
@@ -166,7 +166,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 bg-electric-blue hover:bg-electric-cyan text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 bg-primary-blue hover:bg-primary-lighter text-white rounded-lg font-semibold transition-all shadow-glow-sm hover:shadow-glow-md disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? 'Sending...' : 'Request Demo'}
                 </button>
