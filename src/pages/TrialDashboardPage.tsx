@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MessageSquare, TrendingUp, Zap, Crown, ArrowRight, Clock, Upload } from 'lucide-react';
 import DashboardLayout from '../components/layout/DashboardLayout';
 import TrialBanner from '../components/trial/TrialBanner';
+import WelcomeBanner from '../components/trial/WelcomeBanner';
 import UsageBar from '../components/trial/UsageBar';
 import UpgradeModal from '../components/trial/UpgradeModal';
 import { useTrial } from '../contexts/TrialContext';
@@ -61,6 +62,7 @@ export default function TrialDashboardPage() {
     <DashboardLayout>
       <div className="p-6 max-w-7xl mx-auto">
         <TrialBanner />
+        <WelcomeBanner />
 
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Dashboard</h1>

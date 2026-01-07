@@ -1,4 +1,4 @@
-import { User, Bell, Shield, CreditCard } from 'lucide-react';
+import { User, Bell, Shield, CreditCard, Mail, MessageSquare, Phone, Headphones, Lock } from 'lucide-react';
 import DashboardLayout from '../components/layout/DashboardLayout';
 import { useAuth } from '../contexts/AuthContext';
 import { useTrial } from '../contexts/TrialContext';
@@ -91,6 +91,47 @@ export default function SettingsPage() {
                   <div className="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-5"></div>
                 </label>
               </div>
+            </div>
+          </div>
+
+          <div className="bg-dark-surface border border-dark-border rounded-xl p-6">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 bg-primary-blue/20 rounded-lg">
+                <MessageSquare className="w-6 h-6 text-primary-blue" />
+              </div>
+              <h2 className="text-xl font-bold text-white">Channel Integrations</h2>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { icon: Mail, name: 'Email', status: 'Available in paid plans', color: 'blue' },
+                { icon: MessageSquare, name: 'WhatsApp', status: 'Available in paid plans', color: 'green' },
+                { icon: Phone, name: 'SMS', status: 'Available in paid plans', color: 'violet' },
+                { icon: Headphones, name: 'Live Chat', status: 'Available in paid plans', color: 'cyan' },
+              ].map((channel) => (
+                <div key={channel.name} className="flex items-center justify-between p-4 bg-dark-bg rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className={`p-2 bg-${channel.color}-500/20 rounded-lg`}>
+                      <channel.icon className="w-5 h-5 text-gray-400" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-white">{channel.name}</h3>
+                      <p className="text-sm text-gray-400">{channel.status}</p>
+                    </div>
+                  </div>
+                  <button
+                    disabled
+                    className="px-4 py-2 bg-dark-border/50 text-gray-500 rounded-lg font-medium flex items-center gap-2 cursor-not-allowed"
+                  >
+                    <Lock className="w-4 h-4" />
+                    Locked
+                  </button>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 p-4 bg-primary-blue/10 border border-primary-blue/30 rounded-lg text-sm text-gray-300">
+              <strong className="text-white">Note:</strong> Channel integrations are available in Starter and higher plans. Upgrade to connect your channels.
             </div>
           </div>
 

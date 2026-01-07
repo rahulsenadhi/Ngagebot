@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Sparkles, Building2, Mail, MessageSquare, Phone, Headphones, FileText, Upload, Check } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
+import { generateDemoData } from '../lib/demoData';
 
 const steps = ['Create Workspace', 'Connect Channels', 'Upload Data'];
 
@@ -30,6 +31,8 @@ export default function TrialWelcomePage() {
   const [industry, setIndustry] = useState('');
   const [selectedChannels, setSelectedChannels] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [generateDemo, setGenerateDemo] = useState(true);
+  const [workspaceId, setWorkspaceId] = useState<string>('');
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -43,11 +46,15 @@ export default function TrialWelcomePage() {
           onboarding_completed: false,
         });
 
-        await supabase.from('workspaces').insert({
+        const { data: workspace } = await supabase.from('workspaces').insert({
           user_id: user?.id,
           name: workspaceName,
           industry: industry,
-        });
+        }).select().single();
+
+        if (workspace) {
+          setWorkspaceId(workspace.id);
+        }
 
         setCurrentStep(1);
       } catch (error) {
@@ -62,6 +69,10 @@ export default function TrialWelcomePage() {
 
   const completeOnboarding = async () => {
     try {
+      if (generateDemo && workspaceId) {
+        await generateDemoData(workspaceId);
+      }
+
       await supabase.from('user_profiles').update({
         onboarding_completed: true,
       }).eq('id', user?.id);
@@ -277,6 +288,26 @@ export default function TrialWelcomePage() {
                   <button className="px-6 py-2 bg-dark-surface border border-dark-border rounded-lg text-white hover:bg-dark-surface/50 transition-all">
                     Choose Files
                   </button>
+                </div>
+
+                <div className="bg-accent-green/10 border border-accent-green/30 rounded-lg p-4">
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={generateDemo}
+                      onChange={(e) => setGenerateDemo(e.target.checked)}
+                      className="mt-1 w-5 h-5 rounded border-gray-600 text-primary-blue focus:ring-primary-blue focus:ring-offset-dark-bg"
+                    />
+                    <div>
+                      <h3 className="font-semibold text-white mb-1">
+                        Generate sample conversations
+                      </h3>
+                      <p className="text-sm text-gray-300">
+                        We'll create 5 sample conversations to help you explore Ngagebot's features
+                        right away. You can delete these anytime.
+                      </p>
+                    </div>
+                  </label>
                 </div>
 
                 <div className="bg-primary-blue/10 border border-primary-blue/30 rounded-lg p-4 text-sm text-gray-300">
